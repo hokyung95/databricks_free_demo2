@@ -1,0 +1,35 @@
+resources:
+  jobs:
+    gold_job:
+      name: gold_job
+      tasks:
+        - task_key: silver_table
+          disabled: false
+          email_notifications: {}
+          notebook_task:
+            notebook_path: ../src/silver_table.py
+            source: WORKSPACE
+          run_if: ALL_SUCCESS
+          timeout_seconds: 0
+          webhook_notifications: {}
+        - task_key: gold_table
+          depends_on:
+            - task_key: silver_table
+          disabled: false
+          email_notifications: {}
+          notebook_task:
+            notebook_path: ../src/gold_table.py
+            source: WORKSPACE
+          run_if: ALL_SUCCESS
+          timeout_seconds: 0
+          webhook_notifications: {}
+      email_notifications:
+        no_alert_for_skipped_runs: false
+      max_concurrent_runs: 1
+      performance_target: PERFORMANCE_OPTIMIZED
+      queue:
+        enabled: true
+      run_as:
+        group_name: dataeng
+      timeout_seconds: 0
+      webhook_notifications: {}
