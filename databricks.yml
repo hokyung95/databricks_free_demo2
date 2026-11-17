@@ -35,7 +35,7 @@ targets:
   prod:
     mode: production
     workspace:
-      host: https://dbc-14acdafc-8f5a.cloud.databricks.com?w=7474660147107595
+      host: https://dbc-f20c16c0-9020.cloud.databricks.com
       # We explicitly deploy to /Workspace/Users/hhokyung@naver.com to make sure we only have a single copy.
       root_path: /Workspace/Users/hhokyung@naver.com/.bundle/${bundle.name}/${bundle.target}
     variables:
